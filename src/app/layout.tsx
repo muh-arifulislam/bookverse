@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { Facebook, X } from "lucide-react";
+import Footer from "@/components/ui/Footer";
+import Header from "@/components/ui/Header";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -29,79 +30,9 @@ export default function RootLayout({
         style={{ backgroundColor: "#F3F2EC" }}
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <header>This is the header section</header>
+        <Header />
         <div className="w-full min-h-[80vh]">{children}</div>
-        <footer className="py-14 border-t border-t-[#E0E0E0]">
-          <div>
-            <div className="text-center max-w-screen-lg mx-auto mb-4">
-              <a href="#" className="uppercase">
-                Magazine
-              </a>
-              <span color="#2a2a2a">&nbsp; |&nbsp;&nbsp;</span>
-              <a href="#" className="uppercase">
-                Magazine
-              </a>
-              <span color="#2a2a2a">&nbsp; |&nbsp;&nbsp;</span>
-              <a href="#" className="uppercase">
-                Magazine
-              </a>
-              <span color="#2a2a2a">&nbsp; |&nbsp;&nbsp;</span>
-              <a href="#" className="uppercase">
-                Magazine
-              </a>
-              <span color="#2a2a2a">&nbsp; |&nbsp;&nbsp;</span>
-              <a href="#" className="uppercase">
-                Magazine
-              </a>
-              <span color="#2a2a2a">&nbsp; |&nbsp;&nbsp;</span>
-              <a href="#" className="uppercase">
-                Magazine
-              </a>
-              <span color="#2a2a2a">&nbsp; |&nbsp;&nbsp;</span>
-              <a href="#" className="uppercase">
-                Magazine
-              </a>
-              <span color="#2a2a2a">&nbsp; |&nbsp;&nbsp;</span>
-              <a href="#" className="uppercase">
-                Magazine
-              </a>
-              <span color="#2a2a2a">&nbsp; |&nbsp;&nbsp;</span>
-              <a href="#" className="uppercase">
-                Magazine
-              </a>
-              <span color="#2a2a2a">&nbsp; |&nbsp;&nbsp;</span>
-              <a href="#" className="uppercase">
-                Magazine
-              </a>
-              <span color="#2a2a2a">&nbsp; |&nbsp;&nbsp;</span>
-              <a href="#" className="uppercase">
-                Magazine
-              </a>
-              <span color="#2a2a2a">&nbsp; |&nbsp;&nbsp;</span>
-              <a href="#" className="uppercase">
-                Magazine
-              </a>
-              <span color="#2a2a2a">&nbsp; |&nbsp;&nbsp;</span>
-              <a href="#" className="uppercase">
-                Magazine
-              </a>
-              <span color="#2a2a2a">&nbsp; |&nbsp;&nbsp;</span>
-            </div>
-            <p className="text-center mb-4">
-              <span className="block">ISSN 2689-2715 | Online</span>
-              <span className="block">​ISSN 2688-5425 ​| Print</span>
-              <span className="block">Bookverse REVIEW | © COPYRIGHT 2024</span>
-              <span className="block">​ALL RIGHTS RESERVED.</span>
-            </p>
-            <div className="text-center">
-              <p className="mb-4">FOLLOW US</p>
-              <div className="flex items-center justify-center gap-2">
-                <Facebook />
-                <X />
-              </div>
-            </div>
-          </div>
-        </footer>
+        <Footer />
       </body>
     </html>
   );
