@@ -5,6 +5,7 @@ import { Links } from "./nav-links";
 const Header = () => {
   return (
     <header className="">
+      {/* top bar  */}
       <div className="px-4 lg:px-0 py-4 border-b border-slate-200">
         <div className="container mx-auto ">
           <div className="flex items-center justify-between">
@@ -37,7 +38,8 @@ const Header = () => {
           </div>
         </div>
       </div>
-      <div className="px-4 lg:px-0 py-6 border-b border-slate-200">
+      {/* navbar  */}
+      <div className="sticky top-0 px-4 lg:px-0 py-6 border-b border-slate-200">
         <div className="container mx-auto">
           <Links />
         </div>
