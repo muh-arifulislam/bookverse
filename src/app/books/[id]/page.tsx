@@ -1,11 +1,226 @@
 import { ReviewForm } from "@/components/ui/review-form";
+import { ReviewList } from "@/components/ui/review-list";
+import { Star } from "lucide-react";
 import Image from "next/image";
+
+const MOCK_REVIEWS: Record<number, any[]> = {
+  1: [
+    {
+      id: 1,
+      bookId: 1,
+      author: "Sarah M.",
+      rating: 5,
+      title: "A Timeless Masterpiece",
+      content:
+        "The Great Gatsby is an absolute masterpiece. Fitzgerald's prose is beautiful and the characters are unforgettable. A must-read for anyone who loves classic literature.",
+      date: new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString(),
+      isAnonymous: false,
+    },
+    {
+      id: 2,
+      bookId: 1,
+      author: "John D.",
+      rating: 4,
+      title: "Great but Dense",
+      content:
+        "While the story is compelling, some parts felt a bit slow. Still, it's a classic for a reason and worth the read.",
+      date: new Date(Date.now() - 14 * 24 * 60 * 60 * 1000).toISOString(),
+      isAnonymous: false,
+    },
+    {
+      id: 3,
+      bookId: 1,
+      author: "Anonymous",
+      rating: 5,
+      title: "Loved Every Page",
+      content:
+        "Couldn't put it down! The Jazz Age setting is so vivid and the romance is captivating.",
+      date: new Date(Date.now() - 21 * 24 * 60 * 60 * 1000).toISOString(),
+      isAnonymous: true,
+    },
+  ],
+  2: [
+    {
+      id: 4,
+      bookId: 2,
+      author: "Emma L.",
+      rating: 5,
+      title: "Powerful and Important",
+      content:
+        "This book tackles racism and injustice in such a powerful way. Scout's perspective as a child makes it even more impactful. Everyone should read this.",
+      date: new Date(Date.now() - 5 * 24 * 60 * 60 * 1000).toISOString(),
+      isAnonymous: false,
+    },
+    {
+      id: 5,
+      bookId: 2,
+      author: "Michael R.",
+      rating: 5,
+      title: "A Classic That Still Resonates",
+      content:
+        "Harper Lee's writing is exceptional. The moral lessons in this book are just as relevant today as they were in 1960.",
+      date: new Date(Date.now() - 10 * 24 * 60 * 60 * 1000).toISOString(),
+      isAnonymous: false,
+    },
+    {
+      id: 6,
+      bookId: 2,
+      author: "Anonymous",
+      rating: 4,
+      title: "Great but Challenging",
+      content:
+        "The themes are heavy but necessary. Some parts were difficult to read, but that's the point. Highly recommended.",
+      date: new Date(Date.now() - 30 * 24 * 60 * 60 * 1000).toISOString(),
+      isAnonymous: true,
+    },
+  ],
+  3: [
+    {
+      id: 7,
+      bookId: 3,
+      author: "Alex K.",
+      rating: 5,
+      title: "Eerily Relevant",
+      content:
+        "1984 is terrifyingly relevant to today's world. Orwell's vision of surveillance and control is more prescient than ever.",
+      date: new Date(Date.now() - 8 * 24 * 60 * 60 * 1000).toISOString(),
+      isAnonymous: false,
+    },
+    {
+      id: 8,
+      bookId: 3,
+      author: "Jordan T.",
+      rating: 4,
+      title: "Thought-Provoking",
+      content:
+        "A bit depressing at times, but it really makes you think about freedom and government control. Definitely worth reading.",
+      date: new Date(Date.now() - 15 * 24 * 60 * 60 * 1000).toISOString(),
+      isAnonymous: false,
+    },
+    {
+      id: 9,
+      bookId: 3,
+      author: "Anonymous",
+      rating: 5,
+      title: "Mind-Bending",
+      content:
+        "This book will stay with you long after you finish it. Absolutely brilliant.",
+      date: new Date(Date.now() - 25 * 24 * 60 * 60 * 1000).toISOString(),
+      isAnonymous: true,
+    },
+  ],
+  4: [
+    {
+      id: 10,
+      bookId: 4,
+      author: "Lisa H.",
+      rating: 5,
+      title: "Romance and Wit",
+      content:
+        "Jane Austen's wit is unmatched. Elizabeth Bennet is one of the best female characters in literature. A delightful read.",
+      date: new Date(Date.now() - 6 * 24 * 60 * 60 * 1000).toISOString(),
+      isAnonymous: false,
+    },
+    {
+      id: 11,
+      bookId: 4,
+      author: "Christopher B.",
+      rating: 5,
+      title: "Timeless Romance",
+      content:
+        "Even though it was written over 200 years ago, the romance and social commentary feel fresh and relevant.",
+      date: new Date(Date.now() - 12 * 24 * 60 * 60 * 1000).toISOString(),
+      isAnonymous: false,
+    },
+    {
+      id: 12,
+      bookId: 4,
+      author: "Anonymous",
+      rating: 4,
+      title: "Charming but Slow",
+      content:
+        "Beautiful writing and great characters, though the pacing is a bit slow by modern standards.",
+      date: new Date(Date.now() - 20 * 24 * 60 * 60 * 1000).toISOString(),
+      isAnonymous: true,
+    },
+  ],
+  5: [
+    {
+      id: 13,
+      bookId: 5,
+      author: "David P.",
+      rating: 4,
+      title: "Authentic Teen Voice",
+      content:
+        "Holden Caulfield is such a unique character. His voice is authentic and the story captures teenage angst perfectly.",
+      date: new Date(Date.now() - 9 * 24 * 60 * 60 * 1000).toISOString(),
+      isAnonymous: false,
+    },
+    {
+      id: 14,
+      bookId: 5,
+      author: "Rachel G.",
+      rating: 4,
+      title: "Coming of Age Classic",
+      content:
+        "A great exploration of alienation and growing up. Some parts are dated, but the core themes are timeless.",
+      date: new Date(Date.now() - 18 * 24 * 60 * 60 * 1000).toISOString(),
+      isAnonymous: false,
+    },
+    {
+      id: 15,
+      bookId: 5,
+      author: "Anonymous",
+      rating: 4,
+      title: "Quirky and Engaging",
+      content:
+        "Holden's narrative style is quirky and keeps you engaged throughout. Definitely worth reading.",
+      date: new Date(Date.now() - 28 * 24 * 60 * 60 * 1000).toISOString(),
+      isAnonymous: true,
+    },
+  ],
+  6: [
+    {
+      id: 16,
+      bookId: 6,
+      author: "Nina S.",
+      rating: 5,
+      title: "Fascinating Dystopia",
+      content:
+        "Huxley's vision of a pleasure-based dystopia is fascinating and thought-provoking. Different from 1984 but equally impactful.",
+      date: new Date(Date.now() - 11 * 24 * 60 * 60 * 1000).toISOString(),
+      isAnonymous: false,
+    },
+    {
+      id: 17,
+      bookId: 6,
+      author: "Marcus W.",
+      rating: 4,
+      title: "Prophetic Vision",
+      content:
+        "Aldous Huxley predicted so much about modern society. This book is a warning wrapped in a compelling narrative.",
+      date: new Date(Date.now() - 16 * 24 * 60 * 60 * 1000).toISOString(),
+      isAnonymous: false,
+    },
+    {
+      id: 18,
+      bookId: 6,
+      author: "Anonymous",
+      rating: 4,
+      title: "Thought-Provoking",
+      content:
+        "A unique take on dystopia. Makes you question society and technology in interesting ways.",
+      date: new Date(Date.now() - 22 * 24 * 60 * 60 * 1000).toISOString(),
+      isAnonymous: true,
+    },
+  ],
+};
 
 export default function Page() {
   return (
     <main className="max-w-screen-lg mx-auto px-4 md:px-0">
       <div className="my-10 grid grid-cols-3 gap-5">
-        <div className="sticky top-0 h-fit">
+        <div className="">
           <Image
             src={
               "https://demo.templatesjungle.com/booksaw/images/product-item1.jpg"
@@ -17,136 +232,55 @@ export default function Page() {
         </div>
         <div className="col-span-2">
           {/* Rest of the content remains the same */}
-          <div>
-            <h2 className="text-3xl">El Rinche: Matanza, Vol.3</h2>
+          <div className="px-6">
+            <h2 className="text-3xl font-bold">El Rinche: Matanza, Vol.3</h2>
+            <h4 className="text-lg font-medium text-slate-600/70">
+              Martin S. Luther
+            </h4>
+
+            <div className="mt-4 flex items-center gap-4">
+              <div className="flex items-center gap-2">
+                <div className="flex items-center gap-1">
+                  {[...Array(5)].map((_, i) => (
+                    <Star
+                      key={i}
+                      className={`h-5 w-5 ${
+                        i < Math.floor(4.5)
+                          ? "fill-yellow-400 text-yellow-400"
+                          : "text-muted-foreground"
+                      }`}
+                    />
+                  ))}
+                </div>
+                <span className="text-lg font-semibold text-foreground">
+                  {5.5}
+                </span>
+              </div>
+              <span className="text-muted-foreground">
+                {10} {1 === 1 ? "review" : "reviews"}
+              </span>
+            </div>
             {/* ... rest of the paragraphs ... */}
-            <p>
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Culpa
-              quaerat odit atque iure laboriosam, debitis, dicta nemo libero
-              sint inventore sequi quisquam iste molestiae fugit autem
-              architecto nisi. Quam rem necessitatibus rerum omnis sequi
-              corrupti consequuntur nisi quasi iusto hic a fuga nesciunt
-              perferendis repellendus quis fugit asperiores pariatur quibusdam
-              expedita, magnam culpa ea temporibus praesentium. Asperiores
-              recusandae impedit quaerat totam, est enim esse quod praesentium
-              distinctio, ullam optio perferendis ipsa nulla. Libero explicabo
-              eius itaque. Tenetur dolore debitis hic consectetur veritatis
-              blanditiis facilis distinctio reiciendis perferendis quisquam?
-              Quis blanditiis magnam amet cumque dolores perspiciatis quam unde
-              repudiandae temporibus! Dolor tempora ad, eaque repellendus
-              quisquam commodi animi quos, illo suscipit consectetur nesciunt
-              molestiae architecto accusantium asperiores doloribus? Alias,
-              ducimus expedita temporibus vel accusamus numquam necessitatibus
-              quam in eveniet, ipsam asperiores sunt harum. Quod, qui id. Vel
-              odit suscipit provident aspernatur quia, inventore earum
-              voluptates distinctio amet neque exercitationem. Ipsa odio, facere
-              eligendi, quis nemo ad expedita cupiditate enim est, illum
-              voluptas. Nisi dolorem facere vitae sapiente rem. Ab quaerat rerum
-              quis eius recusandae facilis aut ipsum sequi architecto reiciendis
-              numquam, eum omnis quibusdam impedit optio officia fuga nihil
-              obcaecati nulla aliquid voluptas corporis, ex dolores commodi.
-              Voluptatibus similique rerum necessitatibus ullam rem velit
-              perspiciatis reprehenderit, ipsam eum ad ratione assumenda vel
-              deleniti aperiam autem saepe dolor obcaecati itaque modi ex.
-              Inventore quae assumenda earum quidem natus? Praesentium, magnam
-              maiores tempore aspernatur modi dolorem, repellendus molestiae
-              doloribus laudantium perspiciatis fugit eligendi odit ipsam
-              debitis aliquid neque quos laborum. Quaerat mollitia veritatis
-              temporibus qui quisquam consequatur eveniet, totam unde amet,
-              nobis dolorem quod? Praesentium, reiciendis. Quos voluptates dolor
-              vitae nesciunt labore officiis at unde architecto, accusamus
-              dolore aliquam id officia inventore vel perspiciatis deleniti
-              ullam iure, consequuntur enim cum quasi. Laboriosam quisquam
-              corporis facilis itaque excepturi labore illo repellendus? Sit rem
-              aperiam ea nobis nostrum provident ratione pariatur laboriosam
-              totam doloribus, eius repellendus ex illum aliquid impedit
-              laudantium debitis dolorem? Ad facilis, cupiditate inventore vitae
-              totam veniam at quam delectus nulla nisi minus saepe ipsa nesciunt
-              placeat, tenetur debitis voluptas aliquid in eligendi doloremque
-              sint soluta eveniet asperiores! Et sunt ab dolorum repudiandae
-              quisquam eligendi? Repellendus minima earum laboriosam nobis quos
-              atque eligendi, ut sapiente perferendis, saepe facere, nesciunt
-              quis commodi dolor hic. Repellendus velit officiis in, molestias
-              non error perspiciatis nihil ducimus vel saepe quisquam, tempora
-              illo quidem qui explicabo ratione consequuntur recusandae debitis
-              sed? Facilis enim officiis excepturi obcaecati repellat fugit
-              consequatur, sit reprehenderit, numquam rerum est consectetur modi
-              blanditiis officia voluptates ab dicta laudantium hic suscipit.
-              Aliquam maiores mollitia quas saepe corrupti quae, recusandae
-              magnam possimus eius nostrum tenetur rem, veniam modi similique
-              est laborum explicabo molestias consectetur porro sapiente in
-              minus distinctio iure! Aspernatur obcaecati rerum debitis voluptas
-              sapiente dignissimos adipisci esse dolorem doloremque molestias
-              autem, voluptatibus deserunt aut eius nulla vel ea quis veniam?
-              Quis libero architecto enim molestiae eum, laudantium aspernatur
-              provident nisi dolore eveniet quidem voluptatem soluta minima
-              perferendis facere facilis dolores ratione! Ad tempora vitae minus
-              fuga sed autem at sapiente, nam vero esse corrupti labore minima
-              aliquam libero, dolorum non. Beatae asperiores temporibus neque
-              velit, impedit provident nisi omnis deserunt facere vel aperiam,
-              quaerat iusto quam saepe nesciunt sequi ad! Beatae in quo tempore
-              molestias necessitatibus consectetur ut mollitia cum architecto
-              laudantium fugiat ullam reiciendis, sed harum dolor. Nam
-              consequatur facilis ut ea fugit debitis aspernatur. Laboriosam nam
-              tempore voluptates modi saepe, pariatur fuga et maiores in.
-              Doloribus necessitatibus libero ducimus facilis sunt omnis ipsam
-              ea exercitationem quibusdam dolores ex unde harum consequatur,
-              quisquam asperiores aperiam est cumque et rem maxime earum
-              veritatis? Incidunt, velit dicta laboriosam a iste est praesentium
-              asperiores dolorum cupiditate fugiat ex, quis reprehenderit amet
-              nulla esse rem. Fugiat reiciendis itaque unde aut quis, ipsum
-              minima aspernatur animi nesciunt ut atque sit a mollitia possimus
-              eaque? Totam adipisci quibusdam ipsa tempora consequatur similique
-              esse? Harum maiores veritatis repellat eveniet natus commodi saepe
-              eligendi laudantium velit quidem pariatur magnam quia doloremque,
-              tempora atque repellendus facilis temporibus expedita officiis et
-              repudiandae! Molestias impedit voluptatem repellendus, sapiente
-              nisi a nemo rerum porro dicta provident excepturi, blanditiis
-              minus in nam ullam qui inventore? At fuga, sapiente velit dolore,
-              hic debitis saepe harum autem cupiditate fugit soluta iusto.
-              Voluptatem, necessitatibus magni? Similique beatae assumenda
-              itaque. Qui iusto labore odio maiores officia rem cupiditate,
-              numquam reiciendis. Placeat totam praesentium cupiditate sit iste
-              facere deleniti porro perspiciatis officiis delectus enim
-              laboriosam nihil quia ducimus, optio labore voluptas velit quam
-              magnam distinctio nostrum reiciendis autem vero corporis. Nobis
-              nam aliquid dolorem voluptatum, ducimus, numquam sunt nemo
-              asperiores, quos eligendi laudantium eos? Sed tenetur dignissimos
-              minus aspernatur voluptas illo cumque ut, quis vero quia labore,
-              officiis nihil non ad officia id blanditiis? Qui veniam ipsam
-              exercitationem quam est facere assumenda officiis, at debitis vero
-              hic quisquam necessitatibus aut incidunt consequuntur vel
-              reiciendis expedita, perferendis eos sint adipisci repudiandae
-              odio sunt enim? Facilis eum illo dicta laudantium distinctio.
-              Ratione ut eum, nesciunt quo dolor alias autem repellendus. Eos,
-              illo rem inventore, atque sed, accusantium nulla provident aut
-              vitae accusamus unde autem perferendis id! Laudantium fugiat
-              nostrum esse, eos molestiae iste veritatis hic at rem facere
-              voluptatum accusamus, doloremque est nulla corporis officia id
-              illo impedit ipsum? Voluptatibus ullam maxime ducimus excepturi
-              facilis magni aliquid. Quisquam exercitationem tempore deserunt
-              nihil quasi et ullam minima, quam, corrupti nesciunt, natus
-              veritatis numquam odio magnam odit! Corporis quisquam et ipsa
-              provident soluta dolorem qui doloremque labore laborum voluptate.
-              Laudantium beatae suscipit eos impedit fuga! Tempore, dolore
-              dignissimos! Amet iusto sapiente placeat deleniti illum
-              repudiandae porro ad earum. Quidem est, asperiores magnam
-              provident voluptates reprehenderit nihil excepturi sed dolorem
-              aliquam? Ex, nostrum, et, aliquid cupiditate hic at repudiandae
-              delectus architecto suscipit asperiores a provident. Fugit nostrum
-              eum soluta facilis delectus? Ex eos nam eligendi odit velit a
-              quidem neque, est earum architecto tempora pariatur laudantium
-              dicta rem adipisci quae ad ipsum harum? Eveniet, illum aliquid.
-              Libero voluptatem animi expedita distinctio autem, debitis nobis
-              amet quasi soluta illo impedit ipsa porro tempora neque beatae
-              accusamus natus optio, quis consequatur nostrum possimus labore.
-              Fuga, voluptates facere!
-            </p>
           </div>
           <div>
             <ReviewForm bookId={5205} />
           </div>
         </div>
+      </div>
+      {/* Reviews List */}
+      <div>
+        <h2 className="text-2xl font-bold text-foreground mb-4">
+          Reviews ({MOCK_REVIEWS[1].length})
+        </h2>
+        {MOCK_REVIEWS[1].length > 0 ? (
+          <ReviewList reviews={MOCK_REVIEWS[1]} />
+        ) : (
+          <div className="p-8 text-center">
+            <p className="text-muted-foreground">
+              No reviews yet. Be the first to review!
+            </p>
+          </div>
+        )}
       </div>
     </main>
   );

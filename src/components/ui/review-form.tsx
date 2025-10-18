@@ -69,33 +69,20 @@ export function ReviewForm({ bookId }: ReviewFormProps) {
           </div>
         </div>
 
-        {/* Title */}
+        {/* Reviewer Name (if not logged in) */}
+
         <div>
           <label className="block text-sm font-medium text-foreground mb-2">
-            Review Title (optional)
+            Your Name (optional)
           </label>
           <input
             type="text"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-            placeholder="Give your review a title"
+            value={reviewerName}
+            onChange={(e) => setReviewerName(e.target.value)}
+            placeholder="Leave blank to post as Anonymous"
             className="w-full px-3 py-2 border border-border rounded-md bg-background text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary"
           />
         </div>
-
-        {/* Reviewer Name (if not logged in) */}
-        {/* {!user && (
-          <div>
-            <label className="block text-sm font-medium text-foreground mb-2">Your Name (optional)</label>
-            <input
-              type="text"
-              value={reviewerName}
-              onChange={(e) => setReviewerName(e.target.value)}
-              placeholder="Leave blank to post as Anonymous"
-              className="w-full px-3 py-2 border border-border rounded-md bg-background text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary"
-            />
-          </div>
-        )} */}
 
         {/* Review Content */}
         <div>
@@ -111,7 +98,10 @@ export function ReviewForm({ bookId }: ReviewFormProps) {
           />
         </div>
 
-        <button type="submit" className="w-full">
+        <button
+          type="submit"
+          className="w-full bg-black text-white py-2 rounded font-bold"
+        >
           Post Review
         </button>
       </form>
