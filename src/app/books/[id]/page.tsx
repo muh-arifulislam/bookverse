@@ -217,6 +217,7 @@ const MOCK_REVIEWS: Record<number, any[]> = {
 };
 
 export default function Page() {
+  console.log("first");
   return (
     <main className="max-w-screen-lg mx-auto px-4 md:px-0">
       <div className="my-10 grid grid-cols-3 gap-5">
@@ -233,40 +234,79 @@ export default function Page() {
         <div className="col-span-2">
           {/* Rest of the content remains the same */}
           <div className="px-6">
-            <h2 className="text-3xl font-bold">El Rinche: Matanza, Vol.3</h2>
-            <h4 className="text-lg font-medium text-slate-600/70">
-              Martin S. Luther
-            </h4>
-
-            <div className="mt-4 flex items-center gap-4">
-              <div className="flex items-center gap-2">
-                <div className="flex items-center gap-1">
-                  {[...Array(5)].map((_, i) => (
-                    <Star
-                      key={i}
-                      className={`h-5 w-5 ${
-                        i < Math.floor(4.5)
-                          ? "fill-yellow-400 text-yellow-400"
-                          : "text-muted-foreground"
-                      }`}
-                    />
-                  ))}
-                </div>
-                <span className="text-lg font-semibold text-foreground">
-                  {5.5}
-                </span>
+            <div className="flex flex-col justify-start space-y-6">
+              {/* Title */}
+              <div>
+                <h1 className="text-4xl font-bold text-foreground">
+                  The Great Gatsby
+                </h1>
               </div>
-              <span className="text-muted-foreground">
-                {10} {1 === 1 ? "review" : "reviews"}
-              </span>
+
+              {/* Author */}
+              <div>
+                <p className="text-sm text-muted-foreground mb-1">Author</p>
+                <p className="text-lg font-semibold text-foreground">
+                  F. Scott Fitzgerald
+                </p>
+              </div>
+
+              {/* Publication Year */}
+              <div>
+                <p className="text-sm text-muted-foreground mb-1">Published</p>
+                <p className="text-lg font-semibold text-foreground">1925</p>
+              </div>
+
+              {/* Rating */}
+              <div>
+                <p className="text-sm text-muted-foreground mb-2">Rating</p>
+                <div className="flex items-center gap-3">
+                  <div className="flex items-center gap-1">
+                    {[...Array(5)].map((_, i) => (
+                      <Star
+                        key={i}
+                        className={`h-5 w-5 ${
+                          i < Math.floor(4.35)
+                            ? "fill-yellow-400 text-yellow-400"
+                            : "text-muted-foreground"
+                        }`}
+                      />
+                    ))}
+                  </div>
+                  <span className="text-lg font-semibold text-foreground">
+                    {4.35}
+                  </span>
+                  <span className="text-muted-foreground">
+                    ({MOCK_REVIEWS[1].length}{" "}
+                    {MOCK_REVIEWS[1].length === 1 ? "review" : "reviews"})
+                  </span>
+                </div>
+              </div>
+
+              {/* Description */}
+              <div>
+                <p className="text-sm text-muted-foreground mb-2">
+                  Description
+                </p>
+                <p className="text-foreground leading-relaxed">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Doloribus voluptate quasi soluta consequuntur nesciunt laborum
+                  qui dicta vero id quia minus, culpa ea velit cumque expedita
+                  debitis provident earum. Quasi voluptate labore perferendis.
+                  Ab voluptatem iste nisi quibusdam aspernatur molestiae, fugiat
+                  animi laboriosam a! Necessitatibus eaque unde voluptatem
+                  blanditiis fuga?
+                </p>
+              </div>
             </div>
-            {/* ... rest of the paragraphs ... */}
           </div>
-          <div>
-            <ReviewForm bookId={5205} />
-          </div>
+          <div>{/* <ReviewForm bookId={5205} /> */}</div>
         </div>
       </div>
+
+      <div>
+        <ReviewForm bookId={5002} />
+      </div>
+
       {/* Reviews List */}
       <div>
         <h2 className="text-2xl font-bold text-foreground mb-4">
