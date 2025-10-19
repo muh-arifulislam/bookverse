@@ -1,25 +1,25 @@
-import BookCard from "@/components/ui/BookCard";
 import { Metadata } from "next";
+import { BooksList } from "./BooksList";
 
 export const metadata: Metadata = {
-  title: "Books | Bookverse",
+  title: "All Books | Bookverse",
   description: "lorem5",
 };
 
-export default function Page() {
+export default async function Page() {
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_API_URL}/api/books?page=${1}&limit=${12}`
+  );
+  const data = await res.json();
+
   return (
     <main className="max-w-screen-lg mx-auto px-4 md:px-0">
       <section>
-        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6 my-20">
-          <BookCard />
-          <BookCard />
-          <BookCard />
-          <BookCard />
-          <BookCard />
-          <BookCard />
-          <BookCard />
-          <BookCard />
-        </div>
+        <BooksList
+          initialBooks={data?.data || []}
+          initialPage={1}
+          totalPages={data.totalPages}
+        />
       </section>
     </main>
   );
