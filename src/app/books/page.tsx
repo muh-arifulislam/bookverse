@@ -8,7 +8,8 @@ export const metadata: Metadata = {
 
 export default async function Page() {
   const res = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL}/api/books?page=${1}&limit=${12}`
+    `${process.env.NEXT_PUBLIC_API_URL}/api/books?page=${1}&limit=${12}`,
+    { next: { revalidate: 3600 } }
   );
   const data = await res.json();
 
