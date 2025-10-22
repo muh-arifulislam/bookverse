@@ -5,6 +5,7 @@ import { FeaturedBooks } from "@/components/home/FeaturedBooks";
 import { TopRatedBook } from "@/components/home/TopRatedBook";
 import { PopularBooks } from "@/components/home/PopularBooks";
 import { NewsLetter } from "@/components/ui/NewsLetter";
+import { Articles } from "@/components/home/Articles";
 
 export default function Home() {
   return (
@@ -15,6 +16,7 @@ export default function Home() {
       <TopRatedBook />
       <PopularBooks />
       <NewsLetter />
+      <Articles />
     </main>
   );
 }
