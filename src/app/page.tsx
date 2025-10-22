@@ -3,6 +3,8 @@ import { Clients } from "@/components/home/Clients";
 import { Banners } from "@/components/home/Banners";
 import { FeaturedBooks } from "@/components/home/FeaturedBooks";
 import { TopRatedBook } from "@/components/home/TopRatedBook";
+import { PopularBooks } from "@/components/home/PopularBooks";
+import { NewsLetter } from "@/components/ui/NewsLetter";
 
 export default function Home() {
   return (
@@ -11,6 +13,8 @@ export default function Home() {
       <Clients />
       <FeaturedBooks />
       <TopRatedBook />
+      <PopularBooks />
+      <NewsLetter />
     </main>
   );
 }
