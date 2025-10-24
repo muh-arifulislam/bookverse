@@ -4,7 +4,7 @@ import { MoveRight } from "lucide-react";
 
 export function PopularBooks() {
   return (
-    <section className="max-w-screen-lg mx-auto px-0 my-20">
+    <section className="max-w-screen-lg mx-auto px-0 my-20" id="popular">
       <div>
         <div>
           <div className="text-center">

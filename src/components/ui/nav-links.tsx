@@ -15,12 +15,12 @@ const NAVITEMS = [
     url: "/books",
   },
   {
-    name: "Popular",
-    url: "#",
+    name: "#Popular",
+    url: "/#popular",
   },
   {
     name: "Articles",
-    url: "#",
+    url: "/articles",
   },
   {
     name: "About",
