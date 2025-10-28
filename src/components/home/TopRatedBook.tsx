@@ -4,7 +4,7 @@ export function TopRatedBook() {
   return (
     <section className="bg-slate-300/60 py-30">
       <div className="max-w-screen-lg mx-auto px-4">
-        <div className=" max-w-screen-md mx-auto grid grid-cols-2 gap-20">
+        <div className=" max-w-screen-md mx-auto grid grid-cols-1 md:grid-cols-2 gap-20">
           <div>
             <Image
               src="https://demo.templatesjungle.com/booksaw/images/product-item1.jpg"

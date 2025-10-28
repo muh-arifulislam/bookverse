@@ -12,11 +12,11 @@ export function FeaturedBooks() {
           </div>
           <div className="flex items-center justify-around gap-8">
             <div className="border-b-1 border-slate-300 flex-1 mt-4" />
-            <h1 className="text-5xl font-semibold">Featured Books</h1>
+            <h1 className="text-5xl">Featured Books</h1>
             <div className="border-b-1 border-slate-300 flex-1 mt-4" />
           </div>
         </div>
-        <div className="grid grid-cols-4 mt-20 gap-6">
+        <div className="grid grid-cols-2 md:grid-cols-4 mt-20 gap-6">
           <BookCard />
           <BookCard />
           <BookCard />

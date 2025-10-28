@@ -16,7 +16,7 @@ export function PopularBooks() {
             <div className="border-b-1 border-slate-300 flex-1 mt-4" />
           </div>
         </div>
-        <div className="grid grid-cols-4 mt-20 gap-6">
+        <div className="grid grid-cols-2 md:grid-cols-4 mt-20 gap-6">
           <BookCard />
           <BookCard />
           <BookCard />
@@ -27,7 +27,7 @@ export function PopularBooks() {
             <h2 className="text-5xl font-semibold">Quote of the day</h2>
             <span className="inline-block w-14 h-1 bg-amber-800/70"></span>
           </div>
-          <div className="text-center w-md mx-auto mt-8">
+          <div className="text-center w-full md:w-md mx-auto mt-8">
             <article className="text-2xl leading-[2] tracking-wide font-semibold">
               ““The more that you read, the more things you will know. The more
               that you learn, the more places you’ll go.””

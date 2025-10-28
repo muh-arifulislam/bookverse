@@ -57,7 +57,7 @@ const Banner = ({ title }: { title: string }) => {
   return (
     <div className="w-full max-w-screen-lg mx-auto grid grid-cols-1 md:grid-cols-5 grid-x-0 md:grid-x-10">
       <div className="col-span-3 w-full md:w-[70%] order-2 md:order-1">
-        <h2 className="text-3xl md:text-[4.5rem] leading-[1.4] font-semibold mb-7">
+        <h2 className="text-3xl md:text-[4.5rem] leading-[1.4] font-medium mb-7 text-neutral-800 ">
           {title}
         </h2>
         <h4 className="text-lg leading-[1.8] mb-7">

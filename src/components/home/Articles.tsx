@@ -14,7 +14,7 @@ export async function Articles() {
             <div className="border-b-1 border-slate-300 flex-1 mt-4" />
           </div>
         </div>
-        <div className="grid grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <ArticleCard />
           <ArticleCard />
           <ArticleCard />

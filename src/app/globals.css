@@ -3,59 +3,19 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --accent-color: #c5a992;
+  --secondary-color: #c5a992;
+  --dark-color: #2f2f2f;
+  --light-color: #f3f2ec;
+  --body-text-color: #757575;
+  --light-text-color: #afafaf;
+  --dark-text-color: #2f2f2f;
 }
 
 :root {
   --body-font: "Raleway", sans-serif;
   --heading-font: "Prata", Georgia, serif;
   --secondary-font: "Playfair Display", Georgia, serif;
-}
-
-.raleway {
-  font-family: "Raleway", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 400;
-  font-style: normal;
-}
-
-.prata-regular {
-  font-family: "Prata", serif;
-  font-weight: 400;
-  font-style: normal;
-}
-
-.playfair-display {
-  font-family: "Playfair Display", serif;
-  font-optical-sizing: auto;
-  font-weight: 400;
-  font-style: normal;
-}
-
-.montserrat {
-  font-family: "Montserrat", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 400;
-  font-style: normal;
-}
-
-.cardo-regular {
-  font-family: "Cardo", serif;
-  font-weight: 400;
-  font-style: normal;
-}
-
-.cardo-bold {
-  font-family: "Cardo", serif;
-  font-weight: 700;
-  font-style: normal;
-}
-
-.cardo-regular-italic {
-  font-family: "Cardo", serif;
-  font-weight: 400;
-  font-style: italic;
 }
 
 @theme inline {
@@ -65,22 +25,21 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+body {
+  font-family: var(--body-font);
+  font-weight: 400;
+  font-style: normal;
+  line-height: 2;
+  color: var(--body-text-color);
+  background-color: var(--light-color);
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  /* font-family: Arial, Helvetica, sans-serif; */
-  /* font-family: "Raleway", sans-serif;
-  font-weight: 400;
-  font-style: normal; */
-}
-h3 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: var(--heading-font);
 }
 
