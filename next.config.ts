@@ -7,6 +7,9 @@ const nextConfig: NextConfig = {
       new URL("https://demo.templatesjungle.com/booksaw/images/*"),
     ],
   },
+  turbopack: {
+    root: "./",
+  },
 };
 
 export default nextConfig;

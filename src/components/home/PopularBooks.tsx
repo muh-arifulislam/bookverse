@@ -24,15 +24,17 @@ export function PopularBooks() {
         </div>
         <div className="mt-20">
           <div className="flex flex-col items-center justify-center gap-y-4">
-            <h2 className="text-5xl font-semibold">Quote of the day</h2>
-            <span className="inline-block w-14 h-1 bg-amber-800/70"></span>
+            <h2 className="text-5xl font-medium capitalize text-neutral-800">
+              Quote of the day
+            </h2>
+            <span className="inline-block w-14 h-[3px] bg-amber-900/70"></span>
           </div>
           <div className="text-center w-full md:w-md mx-auto mt-8">
-            <article className="text-2xl leading-[2] tracking-wide font-semibold">
+            <article className="text-2xl leading-[2] tracking-wide">
               ““The more that you read, the more things you will know. The more
               that you learn, the more places you’ll go.””
             </article>
-            <h4 className="text-xl mt-4 font-medium">Dr. Seuss</h4>
+            <h4 className="text-[1.4rem] mt-4">Dr. Seuss</h4>
           </div>
         </div>
       </div>

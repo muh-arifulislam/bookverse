@@ -6,17 +6,17 @@ export function NewsLetter() {
       <div className="w-full max-w-screen-md mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div className="">
-            <h2 className="text-5xl font-medium">
+            <h2 className="text-5xl font-medium capitalize text-neutral-800">
               Subscribe to our newsletter
             </h2>
-            <span className="inline-block w-14 h-[3px] bg-amber-800"></span>
+            <span className="inline-block w-14 h-[3px] bg-amber-900/70"></span>
           </div>
           <div>
             <p className="mb-8">
               Sed eu feugiat amet, libero ipsum enim pharetra hac dolor sit
               amet, consectetur. Elit adipiscing enim pharetra hac.
             </p>
-            <div className="py-6 px-1 border-b flex items-center">
+            <div className="py-6 px-1 border-b border-neutral-600 flex items-center">
               <input
                 type="text"
                 placeholder="Enter your email address"

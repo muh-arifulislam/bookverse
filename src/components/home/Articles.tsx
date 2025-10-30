@@ -10,7 +10,9 @@ export async function Articles() {
           </div>
           <div className="flex items-center justify-around gap-8">
             <div className="border-b-1 border-slate-300 flex-1 mt-4" />
-            <h1 className="text-5xl font-semibold">Latest Articles</h1>
+            <h1 className="text-5xl font-medium text-neutral-800">
+              Latest Articles
+            </h1>
             <div className="border-b-1 border-slate-300 flex-1 mt-4" />
           </div>
         </div>
@@ -36,8 +38,8 @@ export const ArticleCard = () => {
         />
       </div>
       <div>
-        <h4 className="mb-5">Mar 30, 2021</h4>
-        <h2 className="text-2xl font-semibold mb-5 capitalize">
+        <h4 className="mb-5 text-orange-800/70">Mar 30, 2021</h4>
+        <h2 className="text-2xl font-medium text-neutral-800 mb-5 capitalize">
           modern vibes bedrooms, todays trending design
         </h2>
         <p>
