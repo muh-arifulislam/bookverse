@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import { BooksList } from "./BooksList";
+import { getAllBooks } from "@/lib/books";
 
 export const metadata: Metadata = {
   title: "All Books | Bookverse",
@@ -7,19 +8,15 @@ export const metadata: Metadata = {
 };
 
 export default async function Page() {
-  const res = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL}/api/books?page=${1}&limit=${12}`,
-    { next: { revalidate: 3600 } }
-  );
-  const data = await res.json();
+  const { data, totalPages } = await getAllBooks(12, 1);
 
   return (
     <main className="max-w-screen-lg mx-auto px-4 md:px-0">
       <section>
         <BooksList
-          initialBooks={data?.data || []}
+          initialBooks={data ?? []}
           initialPage={1}
-          totalPages={data.totalPages}
+          totalPages={totalPages}
         />
       </section>
     </main>

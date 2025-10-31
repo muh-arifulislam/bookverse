@@ -1,3 +1,4 @@
+import { getAllBooks } from "@/lib/books";
 import prisma from "@prisma/prisma";
 import { NextRequest, NextResponse } from "next/server";
 
@@ -7,19 +8,8 @@ export async function GET(req: NextRequest) {
     const page = parseInt(searchParams.get("page") || "1");
     const limit = parseInt(searchParams.get("limit") || "12");
 
-    const books = await prisma.book.findMany({
-      skip: (page - 1) * limit,
-      take: limit,
-      orderBy: { createdAt: "desc" },
-    });
-
-    const total = await prisma.book.count();
-
-    return NextResponse.json({
-      data: books,
-      page,
-      totalPages: Math.ceil(total / limit),
-    });
+    const result = await getAllBooks(page, limit);
+    return NextResponse.json(result);
   } catch (err) {
     console.error(err);
     return NextResponse.json(

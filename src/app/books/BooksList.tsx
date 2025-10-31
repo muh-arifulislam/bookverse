@@ -4,19 +4,14 @@ import { useState, useEffect, useRef } from "react";
 
 import BookCard from "@/components/ui/BookCard";
 
-type Book = {
-  id: string;
-  title: string;
-  author: string;
-  cover?: string;
-};
+type Book = Record<string, unknown>;
 
 export function BooksList({
   initialBooks,
   initialPage,
   totalPages: initialTotalPages,
 }: {
-  initialBooks: Book[];
+  initialBooks: Book[] | [];
   initialPage: number;
   totalPages: number;
 }) {
@@ -78,7 +73,7 @@ export function BooksList({
     <div>
       <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6 my-20">
         {books.map((book) => (
-          <BookCard key={book.id} />
+          <BookCard key={book.id as string} />
         ))}
       </div>
       <div ref={loaderRef} className="h-10 text-center text-sm">
